@@ -47,4 +47,14 @@ export class ProductsController {
 
         return this.productsService.updateProductName(id, name);
     }
+
+    @Patch('/:id/quantity')
+    updateProductQuantity(
+      @Param('id') id: string,
+      @Body() updateProductDto: UpdateProductDto,
+    ): Promise<Product> {
+        const { quantity } = updateProductDto;
+
+        return this.productsService.updateProductQuantity(id, quantity);
+    }
 }
